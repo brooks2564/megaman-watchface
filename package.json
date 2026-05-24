@@ -1,0 +1,44 @@
+{
+  "name": "MegaManStageSelect",
+  "author": "Brooman Inks",
+  "version": "1.0.0",
+  "keywords": ["pebble-app"],
+  "private": true,
+  "dependencies": {},
+  "pebble": {
+    "displayName": "Mega Man Stage Select",
+    "uuid": "fbc18018-367f-457c-9fcc-b75351ee0dd3",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": ["emery"],
+    "watchapp": { "watchface": true },
+    "capabilities": ["health"],
+    "messageKeys": ["TEMPERATURE"],
+    "resources": {
+      "media": [
+        {
+          "type": "font",
+          "name": "FONT_MEGA_MAN_18",
+          "file": "fonts/megaman.ttf",
+          "characterRegex": "[0-9A-Za-z!@#$%^&*()\\-+=:°/ ]",
+          "compatibility": "2.7"
+        },
+        {
+          "type": "png",
+          "name": "IMAGE_MEGAMAN_IDLE",
+          "file": "images/megaman_idle.png"
+        },
+        {
+          "type": "png",
+          "name": "IMAGE_BT_CONNECTED",
+          "file": "images/etank.png"
+        },
+        {
+          "type": "png",
+          "name": "IMAGE_BT_DISCONNECTED",
+          "file": "images/etank_empty.png"
+        }
+      ]
+    }
+  }
+}
