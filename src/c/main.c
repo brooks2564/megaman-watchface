@@ -152,74 +152,66 @@ static void draw_cloud(GContext *ctx, int cx, int cy, GColor color) {
 static void weather_icon_update_proc(Layer *layer, GContext *ctx) {
   GRect bounds = layer_get_bounds(layer);
   int cx = bounds.size.w / 2;
+  // Layer starts 8px inside cell top, so y=0 here is already safe.
+  // Cloud cy=6: circle2 top = 6+3-8=1 (just inside). Sun cy=17, r=8: ray tip top = 17-16=1.
 
-  // Categorize WMO code
-  // 0=clear, 1-3=partly cloudy, 45-48=fog, 51-77=precip, 80-86=showers, 95+=storm
   if (s_weather_code < 0) {
-    // No data yet — draw a question mark indicator
     graphics_context_set_fill_color(ctx, GColorWhite);
-    graphics_fill_circle(ctx, GPoint(cx, 16), 10);
+    graphics_fill_circle(ctx, GPoint(cx, 15), 9);
     return;
   }
 
-  // All drawing anchored so nothing clips above y=4 (inside cell border)
   if (s_weather_code == 0) {
-    // Clear: big sun — center at y=20, radius 9, rays to y=3
-    draw_sun(ctx, cx, 20, 9);
+    draw_sun(ctx, cx, 17, 8);
 
   } else if (s_weather_code <= 3) {
-    // Partly cloudy: small sun upper-left + cloud below
-    draw_sun(ctx, cx - 8, 14, 7);
-    draw_cloud(ctx, cx + 2, 16, GColorWhite);
+    // Small sun upper-left, cloud center — sun r=5 needs cy>=13 for ray tip >= 0
+    draw_sun(ctx, cx - 8, 13, 5);
+    draw_cloud(ctx, cx + 2, 13, GColorWhite);
 
   } else if (s_weather_code <= 48) {
-    // Fog: cloud + horizontal lines
-    draw_cloud(ctx, cx, 10, GColorLightGray);
+    draw_cloud(ctx, cx, 6, GColorLightGray);
     graphics_context_set_stroke_color(ctx, GColorLightGray);
     graphics_context_set_stroke_width(ctx, 2);
     for (int i = 0; i < 3; i++) {
-      graphics_draw_line(ctx, GPoint(cx - 14, 26 + i * 5), GPoint(cx + 14, 26 + i * 5));
+      graphics_draw_line(ctx, GPoint(cx - 14, 20 + i * 4), GPoint(cx + 14, 20 + i * 4));
     }
 
   } else if ((s_weather_code >= 71 && s_weather_code <= 77) ||
              (s_weather_code >= 85 && s_weather_code <= 86)) {
-    // Snow
-    draw_cloud(ctx, cx, 10, GColorWhite);
+    draw_cloud(ctx, cx, 6, GColorWhite);
     graphics_context_set_fill_color(ctx, GColorCyan);
     int sx[6] = {-12, -4, 4, 12, -8, 8};
-    int sy[6] = {28, 31, 28, 31, 35, 35};
+    int sy[6] = {22, 25, 22, 25, 28, 28};
     for (int i = 0; i < 6; i++) {
       graphics_fill_circle(ctx, GPoint(cx + sx[i], sy[i]), 2);
     }
 
   } else if (s_weather_code <= 67) {
-    // Drizzle / light-moderate rain
-    draw_cloud(ctx, cx, 10, GColorLightGray);
+    draw_cloud(ctx, cx, 6, GColorLightGray);
     graphics_context_set_stroke_color(ctx, GColorCyan);
     graphics_context_set_stroke_width(ctx, 2);
     for (int i = 0; i < 4; i++) {
       int x = cx - 12 + i * 8;
-      graphics_draw_line(ctx, GPoint(x, 26), GPoint(x - 3, 33));
+      graphics_draw_line(ctx, GPoint(x, 20), GPoint(x - 3, 27));
     }
 
   } else if (s_weather_code <= 82) {
-    // Heavy rain / showers
-    draw_cloud(ctx, cx, 10, GColorDarkGray);
+    draw_cloud(ctx, cx, 6, GColorDarkGray);
     graphics_context_set_stroke_color(ctx, GColorCyan);
     graphics_context_set_stroke_width(ctx, 2);
     for (int i = 0; i < 4; i++) {
       int x = cx - 12 + i * 8;
-      graphics_draw_line(ctx, GPoint(x, 26), GPoint(x - 4, 35));
+      graphics_draw_line(ctx, GPoint(x, 20), GPoint(x - 4, 29));
     }
 
   } else {
-    // Thunderstorm (95, 96, 99)
-    draw_cloud(ctx, cx, 10, GColorDarkGray);
+    draw_cloud(ctx, cx, 6, GColorDarkGray);
     graphics_context_set_stroke_color(ctx, GColorYellow);
     graphics_context_set_stroke_width(ctx, 3);
-    graphics_draw_line(ctx, GPoint(cx + 2, 24), GPoint(cx - 4, 32));
-    graphics_draw_line(ctx, GPoint(cx - 4, 32), GPoint(cx + 2, 32));
-    graphics_draw_line(ctx, GPoint(cx + 2, 32), GPoint(cx - 5, 40));
+    graphics_draw_line(ctx, GPoint(cx + 2, 19), GPoint(cx - 4, 27));
+    graphics_draw_line(ctx, GPoint(cx - 4, 27), GPoint(cx + 2, 27));
+    graphics_draw_line(ctx, GPoint(cx + 2, 27), GPoint(cx - 5, 35));
   }
 }
 
@@ -415,10 +407,10 @@ static void main_window_load(Window *window) {
 
   // --- (0,2) Weather: drawn condition icon + temperature ---
   int ry2 = MARGIN_Y + 2*BOX_SIZE;
-  s_weather_icon_layer = layer_create(GRect(cx0, ry2, BOX_SIZE, 40));
+  s_weather_icon_layer = layer_create(GRect(cx0, ry2 + 8, BOX_SIZE, 30));
   layer_set_update_proc(s_weather_icon_layer, weather_icon_update_proc);
   layer_add_child(window_layer, s_weather_icon_layer);
-  s_weather_num_layer = make_text_layer(cx0, ry2, 38, 22, s_font_10, window);
+  s_weather_num_layer = make_text_layer(cx0, ry2, 40, 22, s_font_10, window);
   text_layer_set_text(s_weather_num_layer, "--\xc2\xb0");
 }
 

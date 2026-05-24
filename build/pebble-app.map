@@ -1950,11 +1950,11 @@ LOAD /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../li
  .comment       0x00000039       0x3a /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-errno.o)
  .comment       0x00000039       0x3a /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crtend.o
 
-.debug_info     0x00000000     0x2d9c
- .debug_info    0x00000000     0x28e4 src/c/main.c.9.o
- .debug_info    0x000028e4      0x33e emery/appinfo.auto.c.9.o
- .debug_info    0x00002c22       0xdd emery/src/resource_ids.auto.c.9.o
- .debug_info    0x00002cff       0x9d src/message_keys.auto.c.9.o
+.debug_info     0x00000000     0x2d9a
+ .debug_info    0x00000000     0x28e2 src/c/main.c.9.o
+ .debug_info    0x000028e2      0x33e emery/appinfo.auto.c.9.o
+ .debug_info    0x00002c20       0xdd emery/src/resource_ids.auto.c.9.o
+ .debug_info    0x00002cfd       0x9d src/message_keys.auto.c.9.o
 
 .debug_abbrev   0x00000000      0x69d
  .debug_abbrev  0x00000000      0x550 src/c/main.c.9.o
