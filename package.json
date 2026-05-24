@@ -24,9 +24,33 @@
           "compatibility": "2.7"
         },
         {
+          "type": "font",
+          "name": "FONT_MEGA_MAN_12",
+          "file": "fonts/megaman.ttf",
+          "characterRegex": "[0-9A-Za-z!@#$%^&*()\\-+=:°/ ]",
+          "compatibility": "2.7"
+        },
+        {
+          "type": "font",
+          "name": "FONT_MEGA_MAN_10",
+          "file": "fonts/megaman.ttf",
+          "characterRegex": "[0-9A-Za-z!@#$%^&*()\\-+=:°/ ]",
+          "compatibility": "2.7"
+        },
+        {
           "type": "png",
           "name": "IMAGE_MEGAMAN_IDLE",
           "file": "images/megaman_idle.png"
+        },
+        {
+          "type": "png",
+          "name": "IMAGE_ICON_HR",
+          "file": "images/icon_hr.png"
+        },
+        {
+          "type": "png",
+          "name": "IMAGE_ICON_WALK",
+          "file": "images/icon_walk.png"
         }
       ]
     }
