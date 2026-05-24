@@ -91,18 +91,16 @@ static void etank_update_proc(Layer *layer, GContext *ctx) {
     }
   }
 
-  // Black pixel-art E matching fonttank style: 2px strokes, two middle bars
-  // 9 units wide x 14 units tall at 2px per unit = 18x28 screen pixels
-  // Interior: cols 2-10 (27px wide), rows 1-14 (42px tall) in screen coords
-  int s = 2;  // stroke size in screen pixels
+  // Black pixel-art E: 3 horizontal bars (top, middle, bottom) + left vertical
+  // 9 units wide x 10 units tall at 2px per unit = 18x20 screen pixels
+  int s = 2;
   int ex = ox + 6 + (27 - 9*s) / 2;
-  int ey = oy + 3 + (42 - 14*s) / 2;
+  int ey = oy + 3 + (42 - 10*s) / 2;
   graphics_context_set_fill_color(ctx, GColorBlack);
-  graphics_fill_rect(ctx, GRect(ex,        ey,         9*s, 2*s), 0, GCornerNone); // top bar
-  graphics_fill_rect(ctx, GRect(ex,        ey+2*s,     2*s, 10*s), 0, GCornerNone); // left bar
-  graphics_fill_rect(ctx, GRect(ex,        ey+4*s,     7*s, 2*s), 0, GCornerNone); // upper mid bar
-  graphics_fill_rect(ctx, GRect(ex,        ey+8*s,     7*s, 2*s), 0, GCornerNone); // lower mid bar
-  graphics_fill_rect(ctx, GRect(ex,        ey+12*s,    9*s, 2*s), 0, GCornerNone); // bottom bar
+  graphics_fill_rect(ctx, GRect(ex, ey,       9*s, 2*s), 0, GCornerNone); // top bar
+  graphics_fill_rect(ctx, GRect(ex, ey+2*s,   2*s, 6*s), 0, GCornerNone); // left bar
+  graphics_fill_rect(ctx, GRect(ex, ey+4*s,   7*s, 2*s), 0, GCornerNone); // middle bar
+  graphics_fill_rect(ctx, GRect(ex, ey+8*s,   9*s, 2*s), 0, GCornerNone); // bottom bar
 }
 
 static void grid_update_proc(Layer *layer, GContext *ctx) {
