@@ -370,15 +370,16 @@ static void main_window_load(Window *window) {
   s_walk_icon_bitmap = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_ICON_WALK);
 
   // --- (0,0) Date cell: day name / month / date number ---
+  // y_off shifted up 2px, height +4px to prevent ascender clipping
   int cx0 = MARGIN_X,           ry0 = MARGIN_Y;
-  s_day_name_layer = make_text_layer(cx0, ry0,  5, 16, s_font_10, window);
-  s_month_layer    = make_text_layer(cx0, ry0, 22, 16, s_font_10, window);
-  s_date_num_layer = make_text_layer(cx0, ry0, 40, 16, s_font_10, window);
+  s_day_name_layer = make_text_layer(cx0, ry0,  3, 20, s_font_10, window);
+  s_month_layer    = make_text_layer(cx0, ry0, 20, 20, s_font_10, window);
+  s_date_num_layer = make_text_layer(cx0, ry0, 38, 20, s_font_10, window);
 
   // --- (1,0) Time cell: hours top half, minutes bottom half ---
   int cx1 = MARGIN_X + BOX_SIZE;
-  s_hours_layer  = make_text_layer(cx1, ry0,  8, 24, s_font_18, window);
-  s_minutes_layer = make_text_layer(cx1, ry0, 34, 24, s_font_18, window);
+  s_hours_layer   = make_text_layer(cx1, ry0,  4, 28, s_font_18, window);
+  s_minutes_layer = make_text_layer(cx1, ry0, 32, 28, s_font_18, window);
 
   // --- (2,0) E-Tank ---
   int cx2 = MARGIN_X + 2*BOX_SIZE;
@@ -391,7 +392,7 @@ static void main_window_load(Window *window) {
   s_hr_icon_layer = layer_create(GRect(cx0, ry1, BOX_SIZE, 36));
   layer_set_update_proc(s_hr_icon_layer, hr_icon_update_proc);
   layer_add_child(window_layer, s_hr_icon_layer);
-  s_hr_num_layer = make_text_layer(cx0, ry1, 38, 18, s_font_10, window);
+  s_hr_num_layer = make_text_layer(cx0, ry1, 36, 22, s_font_10, window);
   text_layer_set_text(s_hr_num_layer, "--");
 
   // --- (1,1) Mega Man sprite ---
@@ -409,7 +410,7 @@ static void main_window_load(Window *window) {
   bitmap_layer_set_compositing_mode(s_walk_icon_layer, GCompOpSet);
   bitmap_layer_set_alignment(s_walk_icon_layer, GAlignCenter);
   layer_add_child(window_layer, bitmap_layer_get_layer(s_walk_icon_layer));
-  s_steps_num_layer = make_text_layer(cx2, ry1, 36, 20, s_font_10, window);
+  s_steps_num_layer = make_text_layer(cx2, ry1, 34, 24, s_font_10, window);
   text_layer_set_text(s_steps_num_layer, "0");
 
   // --- (0,2) Weather: drawn condition icon + temperature ---
@@ -417,7 +418,7 @@ static void main_window_load(Window *window) {
   s_weather_icon_layer = layer_create(GRect(cx0, ry2, BOX_SIZE, 40));
   layer_set_update_proc(s_weather_icon_layer, weather_icon_update_proc);
   layer_add_child(window_layer, s_weather_icon_layer);
-  s_weather_num_layer = make_text_layer(cx0, ry2, 40, 18, s_font_10, window);
+  s_weather_num_layer = make_text_layer(cx0, ry2, 38, 22, s_font_10, window);
   text_layer_set_text(s_weather_num_layer, "--\xc2\xb0");
 }
 

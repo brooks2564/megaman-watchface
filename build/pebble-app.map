@@ -1982,11 +1982,11 @@ LOAD /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../li
  .debug_rnglists
                 0x00000000      0x16d src/c/main.c.9.o
 
-.debug_line     0x00000000     0x1288
- .debug_line    0x00000000      0xef0 src/c/main.c.9.o
- .debug_line    0x00000ef0      0x168 emery/appinfo.auto.c.9.o
- .debug_line    0x00001058      0x11b emery/src/resource_ids.auto.c.9.o
- .debug_line    0x00001173      0x115 src/message_keys.auto.c.9.o
+.debug_line     0x00000000     0x128c
+ .debug_line    0x00000000      0xef4 src/c/main.c.9.o
+ .debug_line    0x00000ef4      0x168 emery/appinfo.auto.c.9.o
+ .debug_line    0x0000105c      0x11b emery/src/resource_ids.auto.c.9.o
+ .debug_line    0x00001177      0x115 src/message_keys.auto.c.9.o
 
 .debug_str      0x00000000     0x16c1
  .debug_str     0x00000000     0x16c1 src/c/main.c.9.o
