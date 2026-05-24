@@ -51,8 +51,8 @@ static const uint8_t ETANK_MAP[16][13] = {
 
 // Interior liquid region: cols 3-9, rows 3-12 (black cells that drain)
 #define ELX 3
-#define ELY 3
-#define ELH 10  // rows 3-12
+#define ELY 2
+#define ELH 12  // rows 2-13 (full body)
 
 static void etank_update_proc(Layer *layer, GContext *ctx) {
   GRect bounds = layer_get_bounds(layer);
