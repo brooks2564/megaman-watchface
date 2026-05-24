@@ -40,7 +40,7 @@ static void etank_update_proc(Layer *layer, GContext *ctx) {
   int ox = (bounds.size.w - EW * ES) / 2;
   int oy = (bounds.size.h - EH * ES) / 2;
 
-  // Black background
+  // Only fill the sprite footprint — let grid border show around it
   graphics_context_set_fill_color(ctx, GColorBlack);
   graphics_fill_rect(ctx, GRect(ox, oy, EW * ES, EH * ES), 0, GCornerNone);
 
@@ -114,13 +114,32 @@ static void etank_update_proc(Layer *layer, GContext *ctx) {
 }
 
 static void grid_update_proc(Layer *layer, GContext *ctx) {
-  graphics_context_set_stroke_color(ctx, GColorBlueMoon);
-  graphics_context_set_stroke_width(ctx, 2);
+  GRect bounds = layer_get_bounds(layer);
+
+  // Horizontal stripe background — alternating cyan like stage select screen
+  for (int y = 0; y < bounds.size.h; y += 4) {
+    graphics_context_set_fill_color(ctx, (y % 8 < 4) ? GColorCyan : GColorTiffanyBlue);
+    graphics_fill_rect(ctx, GRect(0, y, bounds.size.w, 4), 0, GCornerNone);
+  }
+
+  // Cell black fills and stage-select style borders
   for (int row = 0; row < 3; row++) {
     for (int col = 0; col < 3; col++) {
-      int x = MARGIN_X + (col * BOX_SIZE);
-      int y = MARGIN_Y + (row * BOX_SIZE);
-      graphics_draw_rect(ctx, GRect(x, y, BOX_SIZE, BOX_SIZE));
+      int x = MARGIN_X + col * BOX_SIZE;
+      int y = MARGIN_Y + row * BOX_SIZE;
+
+      // Black interior
+      graphics_context_set_fill_color(ctx, GColorBlack);
+      graphics_fill_rect(ctx, GRect(x, y, BOX_SIZE, BOX_SIZE), 0, GCornerNone);
+
+      // Outer cyan highlight (1px) — stage select box trim
+      graphics_context_set_stroke_color(ctx, GColorCyan);
+      graphics_context_set_stroke_width(ctx, 1);
+      graphics_draw_rect(ctx, GRect(x + 1, y + 1, BOX_SIZE - 2, BOX_SIZE - 2));
+
+      // Inner teal border (1px) — darker inner line
+      graphics_context_set_stroke_color(ctx, GColorTiffanyBlue);
+      graphics_draw_rect(ctx, GRect(x + 2, y + 2, BOX_SIZE - 4, BOX_SIZE - 4));
     }
   }
 }
@@ -225,8 +244,6 @@ static TextLayer* create_grid_text_layer(int col, int row, Window *window) {
 static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
-  window_set_background_color(window, GColorBlack);
-
   s_grid_layer = layer_create(bounds);
   layer_set_update_proc(s_grid_layer, grid_update_proc);
   layer_add_child(window_layer, s_grid_layer);
