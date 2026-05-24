@@ -27,8 +27,8 @@ static GFont s_retro_font;
 // Pixel-accurate E-Tank: 13w x 16h game pixels from reference sprite
 // 0=black, 1=blue (CobaltBlue), 2=gray (LightGray), 3=dark (DarkGray)
 static const uint8_t ETANK_MAP[16][13] = {
-  {1,1,1,2,1,2,3,2,1,2,1,1,1},  // row  0: top cap
-  {0,0,0,0,0,0,0,0,0,0,0,0,0},  // row  1: black separator
+  {1,1,1,2,1,2,1,2,1,2,1,1,1},  // row  0: top cap
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  1: separator (keep blue strips)
   {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  2: body top
   {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  3: interior
   {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  4: interior
@@ -41,8 +41,8 @@ static const uint8_t ETANK_MAP[16][13] = {
   {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row 11: interior
   {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row 12: interior
   {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row 13: body bottom
-  {0,0,0,0,0,0,0,0,0,0,0,0,0},  // row 14: black separator
-  {1,1,1,2,1,2,3,2,1,2,1,1,1},  // row 15: bottom cap
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row 14: separator (keep blue strips)
+  {1,1,1,2,1,2,1,2,1,2,1,1,1},  // row 15: bottom cap
 };
 
 #define ES 3   // scale: each game pixel = 3x3 screen pixels
@@ -51,8 +51,8 @@ static const uint8_t ETANK_MAP[16][13] = {
 
 // Interior liquid region: cols 3-9, rows 3-12 (black cells that drain)
 #define ELX 3
-#define ELY 2
-#define ELH 12  // rows 2-13 (full body)
+#define ELY 1
+#define ELH 14  // rows 1-14 (full body including separators)
 
 static void etank_update_proc(Layer *layer, GContext *ctx) {
   GRect bounds = layer_get_bounds(layer);
