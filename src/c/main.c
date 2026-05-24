@@ -24,93 +24,72 @@ static GFont s_retro_font;
 #define MARGIN_X 10
 #define MARGIN_Y 24
 
-// Sprite: 16 wide x 18 tall game pixels, scale 3 = 48x54 screen pixels
-// Col layout: B(1) b(2) B(1) liquid(8) B(1) b(2) B(1) = 16
-// Row layout: border(1) cap(2) sep(1) body(10) sep(1) cap(2) border(1) = 18
-#define ES 3  // etank scale
-#define EW 16
-#define EH 18
-#define ELX 4   // liquid area start col
-#define ELY 4   // liquid area start row
-#define ELW 8   // liquid area width (game pixels)
-#define ELH 10  // liquid area height (game pixels)
+// Pixel-accurate E-Tank: 13w x 16h game pixels from reference sprite
+// 0=black, 1=blue (CobaltBlue), 2=gray (LightGray), 3=dark (DarkGray)
+static const uint8_t ETANK_MAP[16][13] = {
+  {1,1,1,2,1,2,3,2,1,2,1,1,1},  // row  0: top cap
+  {0,0,0,0,0,0,0,0,0,0,0,0,0},  // row  1: black separator
+  {0,1,2,1,2,2,3,2,2,1,2,1,0},  // row  2: E top bar
+  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row  3: interior
+  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row  4: interior
+  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row  5: interior
+  {0,1,2,0,0,0,3,2,2,1,2,1,0},  // row  6: E mid bar 1
+  {0,1,2,0,0,0,0,0,0,1,2,1,0},  // row  7: interior (right col=blue)
+  {0,1,2,0,0,0,0,0,0,1,2,1,0},  // row  8: interior (right col=blue)
+  {0,1,2,0,0,0,3,2,2,1,2,1,0},  // row  9: E mid bar 2
+  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row 10: interior
+  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row 11: interior
+  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row 12: interior
+  {0,1,2,1,2,2,3,2,2,1,2,1,0},  // row 13: E bottom bar
+  {0,0,0,0,0,0,0,0,0,0,0,0,0},  // row 14: black separator
+  {1,1,1,2,1,2,3,2,1,2,1,1,1},  // row 15: bottom cap
+};
+
+#define ES 3   // scale: each game pixel = 3x3 screen pixels
+#define EGW 13 // game width
+#define EGH 16 // game height
+
+// Interior liquid region: cols 3-9, rows 3-12 (black cells that drain)
+#define ELX 3
+#define ELY 3
+#define ELH 10  // rows 3-12
 
 static void etank_update_proc(Layer *layer, GContext *ctx) {
   GRect bounds = layer_get_bounds(layer);
-  int ox = (bounds.size.w - EW * ES) / 2;
-  int oy = (bounds.size.h - EH * ES) / 2;
+  int ox = (bounds.size.w - EGW * ES) / 2;
+  int oy = (bounds.size.h - EGH * ES) / 2;
 
-  // Only fill the sprite footprint — let grid border show around it
-  graphics_context_set_fill_color(ctx, GColorBlack);
-  graphics_fill_rect(ctx, GRect(ox, oy, EW * ES, EH * ES), 0, GCornerNone);
+  // Battery fill level (from bottom): how many interior rows are "full"
+  int fill_rows = (ELH * s_battery_percent) / 100;
+  int empty_rows = ELH - fill_rows;
 
-  // TOP CAP
-  // Row 1: blue cols 1-2 and 13-14, gray cols 3-12
-  graphics_context_set_fill_color(ctx, GColorCobaltBlue);
-  graphics_fill_rect(ctx, GRect(ox+1*ES, oy+1*ES, 2*ES, ES), 0, GCornerNone);
-  graphics_fill_rect(ctx, GRect(ox+13*ES, oy+1*ES, 2*ES, ES), 0, GCornerNone);
-  graphics_context_set_fill_color(ctx, GColorLightGray);
-  graphics_fill_rect(ctx, GRect(ox+3*ES, oy+1*ES, 10*ES, ES), 0, GCornerNone);
+  GColor fill_color = s_battery_percent > 50 ? GColorCyan :
+                      s_battery_percent > 20 ? GColorYellow : GColorRed;
 
-  // Row 2: blue col 1 and 14, gray cols 2-13
-  graphics_context_set_fill_color(ctx, GColorCobaltBlue);
-  graphics_fill_rect(ctx, GRect(ox+1*ES, oy+2*ES, ES, ES), 0, GCornerNone);
-  graphics_fill_rect(ctx, GRect(ox+14*ES, oy+2*ES, ES, ES), 0, GCornerNone);
-  graphics_context_set_fill_color(ctx, GColorLightGray);
-  graphics_fill_rect(ctx, GRect(ox+2*ES, oy+2*ES, 12*ES, ES), 0, GCornerNone);
+  for (int gy = 0; gy < EGH; gy++) {
+    for (int gx = 0; gx < EGW; gx++) {
+      uint8_t pixel = ETANK_MAP[gy][gx];
+      GColor color;
 
-  // BODY - blue side strips rows 4-13
-  graphics_context_set_fill_color(ctx, GColorCobaltBlue);
-  graphics_fill_rect(ctx, GRect(ox+1*ES, oy+ELY*ES, 2*ES, ELH*ES), 0, GCornerNone);
-  graphics_fill_rect(ctx, GRect(ox+13*ES, oy+ELY*ES, 2*ES, ELH*ES), 0, GCornerNone);
+      // Interior black cells get the battery fill treatment
+      bool is_interior = (pixel == 0 && gx >= ELX && gx <= 9 &&
+                          gy >= ELY && gy <= (ELY + ELH - 1));
+      if (is_interior) {
+        int interior_row = gy - ELY;
+        color = (interior_row >= empty_rows) ? fill_color : GColorBlack;
+      } else {
+        switch (pixel) {
+          case 1:  color = GColorCobaltBlue; break;
+          case 2:  color = GColorLightGray;  break;
+          case 3:  color = GColorDarkGray;   break;
+          default: color = GColorBlack;      break;
+        }
+      }
 
-  // LIQUID AREA fill/drain
-  int lx = ox + ELX * ES;
-  int ly = oy + ELY * ES;
-  int lw = ELW * ES;
-  int lh = ELH * ES;
-
-  int fill_h = (lh * s_battery_percent) / 100;
-  int empty_h = lh - fill_h;
-
-  // Empty top portion (black)
-  if (empty_h > 0) {
-    graphics_context_set_fill_color(ctx, GColorBlack);
-    graphics_fill_rect(ctx, GRect(lx, ly, lw, empty_h), 0, GCornerNone);
+      graphics_context_set_fill_color(ctx, color);
+      graphics_fill_rect(ctx, GRect(ox + gx*ES, oy + gy*ES, ES, ES), 0, GCornerNone);
+    }
   }
-
-  // Filled bottom portion (color shifts with level)
-  if (fill_h > 0) {
-    GColor fill_color = s_battery_percent > 50 ? GColorCyan :
-                        s_battery_percent > 20 ? GColorYellow : GColorRed;
-    graphics_context_set_fill_color(ctx, fill_color);
-    graphics_fill_rect(ctx, GRect(lx, ly + empty_h, lw, fill_h), 0, GCornerNone);
-  }
-
-  // E LETTER - always gray, drawn on top of liquid
-  // 6 wide x 8 tall, offset (1,1) from liquid area top-left
-  int ex = lx + 1*ES;
-  int ey = ly + 1*ES;
-  graphics_context_set_fill_color(ctx, GColorLightGray);
-  graphics_fill_rect(ctx, GRect(ex,          ey,        6*ES, ES), 0, GCornerNone); // top bar
-  graphics_fill_rect(ctx, GRect(ex,          ey+ES,     ES,   7*ES), 0, GCornerNone); // left bar
-  graphics_fill_rect(ctx, GRect(ex,          ey+3*ES,   5*ES, ES), 0, GCornerNone); // middle bar
-  graphics_fill_rect(ctx, GRect(ex,          ey+7*ES,   6*ES, ES), 0, GCornerNone); // bottom bar
-
-  // BOTTOM CAP (mirror of top)
-  // Row 15: blue col 1 and 14, gray cols 2-13
-  graphics_context_set_fill_color(ctx, GColorCobaltBlue);
-  graphics_fill_rect(ctx, GRect(ox+1*ES,  oy+15*ES, ES,    ES), 0, GCornerNone);
-  graphics_fill_rect(ctx, GRect(ox+14*ES, oy+15*ES, ES,    ES), 0, GCornerNone);
-  graphics_context_set_fill_color(ctx, GColorLightGray);
-  graphics_fill_rect(ctx, GRect(ox+2*ES,  oy+15*ES, 12*ES, ES), 0, GCornerNone);
-
-  // Row 16: blue cols 1-2 and 13-14, gray cols 3-12
-  graphics_context_set_fill_color(ctx, GColorCobaltBlue);
-  graphics_fill_rect(ctx, GRect(ox+1*ES,  oy+16*ES, 2*ES, ES), 0, GCornerNone);
-  graphics_fill_rect(ctx, GRect(ox+13*ES, oy+16*ES, 2*ES, ES), 0, GCornerNone);
-  graphics_context_set_fill_color(ctx, GColorLightGray);
-  graphics_fill_rect(ctx, GRect(ox+3*ES,  oy+16*ES, 10*ES, ES), 0, GCornerNone);
 }
 
 static void grid_update_proc(Layer *layer, GContext *ctx) {
