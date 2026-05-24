@@ -80,10 +80,7 @@ static void etank_update_proc(Layer *layer, GContext *ctx) {
       } else {
         switch (pixel) {
           case 1:  color = GColorBlue;  break;
-          case 2:
-            // E letter (left bar + top/mid/bottom bars) = black; right inner border (col 10) + caps = cyan
-            color = (gy >= 2 && gy <= 13 && gx != 10) ? GColorBlack : GColorCyan;
-            break;
+          case 2:  color = (gy >= 2 && gy <= 13) ? GColorBlack : GColorCyan; break;
           case 3:  color = GColorBlack; break;
           default: color = GColorBlack;      break;
         }
