@@ -29,18 +29,18 @@ static GFont s_retro_font;
 static const uint8_t ETANK_MAP[16][13] = {
   {1,1,1,2,1,2,3,2,1,2,1,1,1},  // row  0: top cap
   {0,0,0,0,0,0,0,0,0,0,0,0,0},  // row  1: black separator
-  {0,1,2,1,2,2,3,2,2,1,2,1,0},  // row  2: E top bar
-  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row  3: interior
-  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row  4: interior
-  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row  5: interior
-  {0,1,2,0,0,0,3,2,2,1,2,1,0},  // row  6: E mid bar 1
-  {0,1,2,0,0,0,0,0,0,1,2,1,0},  // row  7: interior (right col=blue)
-  {0,1,2,0,0,0,0,0,0,1,2,1,0},  // row  8: interior (right col=blue)
-  {0,1,2,0,0,0,3,2,2,1,2,1,0},  // row  9: E mid bar 2
-  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row 10: interior
-  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row 11: interior
-  {0,1,2,0,0,0,0,0,0,0,2,1,0},  // row 12: interior
-  {0,1,2,1,2,2,3,2,2,1,2,1,0},  // row 13: E bottom bar
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  2: body top
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  3: interior
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  4: interior
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  5: interior
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  6: interior
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  7: interior
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  8: interior
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row  9: interior
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row 10: interior
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row 11: interior
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row 12: interior
+  {0,1,0,0,0,0,0,0,0,0,0,1,0},  // row 13: body bottom
   {0,0,0,0,0,0,0,0,0,0,0,0,0},  // row 14: black separator
   {1,1,1,2,1,2,3,2,1,2,1,1,1},  // row 15: bottom cap
 };
@@ -72,7 +72,7 @@ static void etank_update_proc(Layer *layer, GContext *ctx) {
       GColor color;
 
       // Interior black cells get the battery fill treatment
-      bool is_interior = (pixel == 0 && gx >= ELX && gx <= 9 &&
+      bool is_interior = (pixel == 0 && gx >= 2 && gx <= 10 &&
                           gy >= ELY && gy <= (ELY + ELH - 1));
       if (is_interior) {
         int interior_row = gy - ELY;
