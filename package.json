@@ -13,7 +13,7 @@
     "targetPlatforms": ["emery"],
     "watchapp": { "watchface": true },
     "capabilities": ["health"],
-    "messageKeys": ["TEMPERATURE"],
+    "messageKeys": ["TEMPERATURE", "WEATHER_CODE"],
     "resources": {
       "media": [
         {

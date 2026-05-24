@@ -7,3 +7,4 @@
 //
 
 extern uint32_t MESSAGE_KEY_TEMPERATURE;
+extern uint32_t MESSAGE_KEY_WEATHER_CODE;

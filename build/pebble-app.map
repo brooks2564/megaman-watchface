@@ -494,7 +494,6 @@ Discarded input sections
  .text.srand    0x00000000        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
  .text.strcat   0x00000000        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
  .text.strcmp   0x00000000        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
- .text.strcpy   0x00000000        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
  .text.strlen   0x00000000        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
  .text.strncat  0x00000000        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
  .text.strncmp  0x00000000        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
@@ -1466,367 +1465,369 @@ LOAD /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../li
  .note.gnu.build-id
                 0x00000084       0x24 linker stubs
 
-.text           0x000000a8      0xecd
+.text           0x000000a8     0x12a4
  *(.text)
  .text          0x000000a8       0x14 /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
  *(.text.*)
  .text.inbox_received_callback
-                0x000000bc       0x4c src/c/main.c.9.o
- .text.bluetooth_handler
-                0x00000108        0x8 src/c/main.c.9.o
- .text.main_window_unload
-                0x00000110      0x110 src/c/main.c.9.o
- .text.weather_icon_update_proc
-                0x00000220       0xbc src/c/main.c.9.o
- .text.etank_update_proc
-                0x000002dc      0x1a4 src/c/main.c.9.o
- .text.grid_update_proc
-                0x00000480      0x102 src/c/main.c.9.o
- .text.create_cell_text_layer
-                0x00000582       0x70 src/c/main.c.9.o
- *fill*         0x000005f2        0x2 
- .text.update_time
-                0x000005f4       0xa4 src/c/main.c.9.o
- .text.tick_handler
-                0x00000698        0x4 src/c/main.c.9.o
+                0x000000bc       0x80 src/c/main.c.9.o
  .text.battery_handler
-                0x0000069c       0x54 src/c/main.c.9.o
- .text.update_steps
-                0x000006f0       0x64 src/c/main.c.9.o
- .text.update_heart_rate
-                0x00000754       0x78 src/c/main.c.9.o
- .text.health_handler
-                0x000007cc       0x24 src/c/main.c.9.o
- .text.create_cell_icon_layer.constprop.0
-                0x000007f0       0x58 src/c/main.c.9.o
+                0x0000013c       0x24 src/c/main.c.9.o
+ .text.bluetooth_handler
+                0x00000160        0x8 src/c/main.c.9.o
+ .text.main_window_unload
+                0x00000168       0xf4 src/c/main.c.9.o
+ .text.draw_sun
+                0x0000025c       0xb4 src/c/main.c.9.o
+ .text.draw_cloud
+                0x00000310       0x80 src/c/main.c.9.o
+ .text.weather_icon_update_proc
+                0x00000390      0x2a8 src/c/main.c.9.o
+ .text.hr_icon_update_proc
+                0x00000638       0xa0 src/c/main.c.9.o
+ .text.etank_update_proc
+                0x000006d8      0x1a4 src/c/main.c.9.o
+ .text.grid_update_proc
+                0x0000087c      0x102 src/c/main.c.9.o
+ .text.make_text_layer
+                0x0000097e       0x62 src/c/main.c.9.o
  .text.main_window_load
-                0x00000848      0x288 src/c/main.c.9.o
+                0x000009e0      0x2b4 src/c/main.c.9.o
+ .text.update_time
+                0x00000c94       0xd0 src/c/main.c.9.o
+ .text.tick_handler
+                0x00000d64        0x4 src/c/main.c.9.o
+ .text.update_steps
+                0x00000d68       0x64 src/c/main.c.9.o
+ .text.update_heart_rate
+                0x00000dcc       0x80 src/c/main.c.9.o
+ .text.health_handler
+                0x00000e4c       0x24 src/c/main.c.9.o
  .text.startup.main
-                0x00000ad0       0xc8 src/c/main.c.9.o
-                0x00000ad0                main
+                0x00000e70       0xc8 src/c/main.c.9.o
+                0x00000e70                main
  .text.app_event_loop
-                0x00000b98        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000b98                app_event_loop
+                0x00000f38        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000f38                app_event_loop
  .text.app_message_open
-                0x00000ba4        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000ba4                app_message_open
+                0x00000f44        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000f44                app_message_open
  .text.battery_state_service_peek
-                0x00000bb0        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000bb0                battery_state_service_peek
+                0x00000f50        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000f50                battery_state_service_peek
  .text.battery_state_service_subscribe
-                0x00000bbc        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000bbc                battery_state_service_subscribe
+                0x00000f5c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000f5c                battery_state_service_subscribe
  .text.bitmap_layer_create
-                0x00000bc8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000bc8                bitmap_layer_create
+                0x00000f68        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000f68                bitmap_layer_create
  .text.bitmap_layer_destroy
-                0x00000bd4        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000bd4                bitmap_layer_destroy
+                0x00000f74        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000f74                bitmap_layer_destroy
  .text.bitmap_layer_get_layer
-                0x00000be0        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000be0                bitmap_layer_get_layer
+                0x00000f80        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000f80                bitmap_layer_get_layer
  .text.bitmap_layer_set_alignment
-                0x00000bec        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000bec                bitmap_layer_set_alignment
+                0x00000f8c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000f8c                bitmap_layer_set_alignment
  .text.bitmap_layer_set_bitmap
-                0x00000bf8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000bf8                bitmap_layer_set_bitmap
+                0x00000f98        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000f98                bitmap_layer_set_bitmap
  .text.bitmap_layer_set_compositing_mode
-                0x00000c04        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c04                bitmap_layer_set_compositing_mode
+                0x00000fa4        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000fa4                bitmap_layer_set_compositing_mode
  .text.clock_is_24h_style
-                0x00000c10        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c10                clock_is_24h_style
+                0x00000fb0        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000fb0                clock_is_24h_style
  .text.dict_find
-                0x00000c1c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c1c                dict_find
+                0x00000fbc        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000fbc                dict_find
  .text.fonts_load_custom_font
-                0x00000c28        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c28                fonts_load_custom_font
+                0x00000fc8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000fc8                fonts_load_custom_font
  .text.fonts_unload_custom_font
-                0x00000c34        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c34                fonts_unload_custom_font
+                0x00000fd4        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000fd4                fonts_unload_custom_font
  .text.gbitmap_create_with_resource
-                0x00000c40        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c40                gbitmap_create_with_resource
+                0x00000fe0        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000fe0                gbitmap_create_with_resource
  .text.gbitmap_destroy
-                0x00000c4c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c4c                gbitmap_destroy
+                0x00000fec        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000fec                gbitmap_destroy
  .text.graphics_draw_line
-                0x00000c58        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c58                graphics_draw_line
+                0x00000ff8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00000ff8                graphics_draw_line
  .text.graphics_draw_rect
-                0x00000c64        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c64                graphics_draw_rect
+                0x00001004        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001004                graphics_draw_rect
  .text.graphics_fill_circle
-                0x00000c70        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c70                graphics_fill_circle
+                0x00001010        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001010                graphics_fill_circle
  .text.graphics_fill_rect
-                0x00000c7c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c7c                graphics_fill_rect
+                0x0000101c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x0000101c                graphics_fill_rect
  .text.layer_add_child
-                0x00000c88        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c88                layer_add_child
+                0x00001028        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001028                layer_add_child
  .text.layer_create
-                0x00000c94        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000c94                layer_create
+                0x00001034        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001034                layer_create
  .text.layer_destroy
-                0x00000ca0        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000ca0                layer_destroy
+                0x00001040        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001040                layer_destroy
  .text.layer_get_bounds
-                0x00000cac        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000cac                layer_get_bounds
+                0x0000104c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x0000104c                layer_get_bounds
  .text.layer_mark_dirty
-                0x00000cb8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000cb8                layer_mark_dirty
+                0x00001058        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001058                layer_mark_dirty
  .text.layer_set_update_proc
-                0x00000cc4        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000cc4                layer_set_update_proc
+                0x00001064        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001064                layer_set_update_proc
  .text.resource_get_handle
-                0x00000cd0        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000cd0                resource_get_handle
+                0x00001070        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001070                resource_get_handle
  .text.snprintf
-                0x00000cdc        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000cdc                snprintf
+                0x0000107c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x0000107c                snprintf
+ .text.strcpy   0x00001088        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001088                strcpy
  .text.strftime
-                0x00000ce8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000ce8                strftime
+                0x00001094        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001094                strftime
  .text.tick_timer_service_subscribe
-                0x00000cf4        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000cf4                tick_timer_service_subscribe
+                0x000010a0        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000010a0                tick_timer_service_subscribe
  .text.vibes_double_pulse
-                0x00000d00        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d00                vibes_double_pulse
+                0x000010ac        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000010ac                vibes_double_pulse
  .text.window_create
-                0x00000d0c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d0c                window_create
+                0x000010b8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000010b8                window_create
  .text.window_destroy
-                0x00000d18        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d18                window_destroy
+                0x000010c4        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000010c4                window_destroy
  .text.window_get_root_layer
-                0x00000d24        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d24                window_get_root_layer
+                0x000010d0        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000010d0                window_get_root_layer
  .text.window_set_window_handlers
-                0x00000d30        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d30                window_set_window_handlers
+                0x000010dc        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000010dc                window_set_window_handlers
  .text.window_stack_push
-                0x00000d3c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d3c                window_stack_push
+                0x000010e8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000010e8                window_stack_push
  .text.app_message_register_inbox_received
-                0x00000d48        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d48                app_message_register_inbox_received
+                0x000010f4        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000010f4                app_message_register_inbox_received
  .text.graphics_context_set_fill_color
-                0x00000d54        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d54                graphics_context_set_fill_color
+                0x00001100        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001100                graphics_context_set_fill_color
  .text.graphics_context_set_stroke_color
-                0x00000d60        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d60                graphics_context_set_stroke_color
+                0x0000110c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x0000110c                graphics_context_set_stroke_color
  .text.localtime
-                0x00000d6c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d6c                localtime
+                0x00001118        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001118                localtime
  .text.graphics_context_set_stroke_width
-                0x00000d78        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d78                graphics_context_set_stroke_width
+                0x00001124        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001124                graphics_context_set_stroke_width
  .text.text_layer_create
-                0x00000d84        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d84                text_layer_create
+                0x00001130        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001130                text_layer_create
  .text.text_layer_destroy
-                0x00000d90        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d90                text_layer_destroy
+                0x0000113c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x0000113c                text_layer_destroy
  .text.text_layer_get_layer
-                0x00000d9c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000d9c                text_layer_get_layer
+                0x00001148        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001148                text_layer_get_layer
  .text.text_layer_set_background_color
-                0x00000da8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000da8                text_layer_set_background_color
+                0x00001154        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001154                text_layer_set_background_color
  .text.text_layer_set_font
-                0x00000db4        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000db4                text_layer_set_font
+                0x00001160        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001160                text_layer_set_font
  .text.text_layer_set_text
-                0x00000dc0        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000dc0                text_layer_set_text
+                0x0000116c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x0000116c                text_layer_set_text
  .text.text_layer_set_text_alignment
-                0x00000dcc        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000dcc                text_layer_set_text_alignment
+                0x00001178        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001178                text_layer_set_text_alignment
  .text.text_layer_set_text_color
-                0x00000dd8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000dd8                text_layer_set_text_color
- .text.time     0x00000de4        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000de4                time
+                0x00001184        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001184                text_layer_set_text_color
+ .text.time     0x00001190        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x00001190                time
  .text.connection_service_subscribe
-                0x00000df0        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000df0                connection_service_subscribe
+                0x0000119c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x0000119c                connection_service_subscribe
  .text.health_service_events_subscribe
-                0x00000dfc        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000dfc                health_service_events_subscribe
+                0x000011a8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000011a8                health_service_events_subscribe
  .text.health_service_metric_accessible
-                0x00000e08        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000e08                health_service_metric_accessible
+                0x000011b4        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000011b4                health_service_metric_accessible
  .text.health_service_sum_today
-                0x00000e14        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000e14                health_service_sum_today
+                0x000011c0        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000011c0                health_service_sum_today
  .text.time_start_of_today
-                0x00000e20        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000e20                time_start_of_today
+                0x000011cc        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000011cc                time_start_of_today
  .text.health_service_peek_current_value
-                0x00000e2c        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
-                0x00000e2c                health_service_peek_current_value
+                0x000011d8        0xc /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+                0x000011d8                health_service_peek_current_value
  *(.rodata)
- .rodata        0x00000e38       0x40 src/c/main.c.9.o
+ .rodata        0x000011e4       0x70 src/c/main.c.9.o
  *(.rodata*)
  .rodata.inbox_received_callback.str1.1
-                0x00000e78       0x2d src/c/main.c.9.o
+                0x00001254       0x28 src/c/main.c.9.o
                                   0x5 (size before relaxing)
- .rodata.update_time.str1.1
-                0x00000ea5       0x15 src/c/main.c.9.o
- .rodata.battery_handler.str1.1
-                0x00000ea5        0x5 src/c/main.c.9.o
- .rodata.update_steps.str1.1
-                0x00000ea5        0x5 src/c/main.c.9.o
- .rodata.update_heart_rate.str1.1
-                0x00000ea5        0x7 src/c/main.c.9.o
  .rodata.main_window_load.str1.1
-                0x00000ea5        0x5 src/c/main.c.9.o
+                0x0000127c        0xa src/c/main.c.9.o
+ .rodata.update_time.str1.1
+                0x0000127c       0x15 src/c/main.c.9.o
+ .rodata.update_heart_rate.str1.1
+                0x0000127c        0x4 src/c/main.c.9.o
  .rodata.ETANK_MAP
-                0x00000ea5       0xd0 src/c/main.c.9.o
+                0x0000127c       0xd0 src/c/main.c.9.o
 
-.glue_7         0x00000f78        0x0
- .glue_7        0x00000f78        0x0 linker stubs
+.glue_7         0x0000134c        0x0
+ .glue_7        0x0000134c        0x0 linker stubs
 
-.glue_7t        0x00000f78        0x0
- .glue_7t       0x00000f78        0x0 linker stubs
+.glue_7t        0x0000134c        0x0
+ .glue_7t       0x0000134c        0x0 linker stubs
 
-.vfp11_veneer   0x00000f78        0x0
- .vfp11_veneer  0x00000f78        0x0 linker stubs
+.vfp11_veneer   0x0000134c        0x0
+ .vfp11_veneer  0x0000134c        0x0 linker stubs
 
-.v4_bx          0x00000f78        0x0
- .v4_bx         0x00000f78        0x0 linker stubs
+.v4_bx          0x0000134c        0x0
+ .v4_bx         0x0000134c        0x0 linker stubs
 
-.init           0x00000f78        0x4
- .init          0x00000f78        0x4 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crti.o
-                0x00000f78                _init
+.init           0x0000134c        0x4
+ .init          0x0000134c        0x4 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crti.o
+                0x0000134c                _init
 
-.fini           0x00000f7c        0x4
- .fini          0x00000f7c        0x4 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crti.o
-                0x00000f7c                _fini
+.fini           0x00001350        0x4
+ .fini          0x00001350        0x4 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crti.o
+                0x00001350                _fini
 
-.iplt           0x00000f80        0x0
- .iplt          0x00000f80        0x0 src/c/main.c.9.o
+.iplt           0x00001354        0x0
+ .iplt          0x00001354        0x0 src/c/main.c.9.o
 
-.rel.dyn        0x00000f80        0x0
- .rel.iplt      0x00000f80        0x0 src/c/main.c.9.o
- .rel.got       0x00000f80        0x0 src/c/main.c.9.o
+.rel.dyn        0x00001354        0x0
+ .rel.iplt      0x00001354        0x0 src/c/main.c.9.o
+ .rel.got       0x00001354        0x0 src/c/main.c.9.o
 
-.data           0x00000f80        0x8
+.data           0x00001354       0x10
  *(.data)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crti.o
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crtbegin.o
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
- .data          0x00000f80        0x0 src/c/main.c.9.o
- .data          0x00000f80        0x0 emery/appinfo.auto.c.9.o
- .data          0x00000f80        0x0 emery/src/resource_ids.auto.c.9.o
- .data          0x00000f80        0x0 src/message_keys.auto.c.9.o
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-atexit.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-exit.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-findfp.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-fwalk.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-stdio.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-closer.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-reent.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-impure.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-lseekr.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-readr.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-writer.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-init.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-fini.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-lock.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-__atexit.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-__call_atexit.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-freer.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-mallocr.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-mlock.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-fclose.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-fflush.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-sbrkr.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-sysconf.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-errno.o)
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crtend.o
- .data          0x00000f80        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crtn.o
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crti.o
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crtbegin.o
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/crt0.o
+ .data          0x00001354        0x0 src/c/main.c.9.o
+ .data          0x00001354        0x0 emery/appinfo.auto.c.9.o
+ .data          0x00001354        0x0 emery/src/resource_ids.auto.c.9.o
+ .data          0x00001354        0x0 src/message_keys.auto.c.9.o
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble/emery/lib/libpebble.a(tmpilr_pxvspebble.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-atexit.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-exit.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-findfp.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-fwalk.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-stdio.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-closer.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-reent.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-impure.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-lseekr.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-readr.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-writer.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-init.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-fini.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-lock.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-__atexit.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-__call_atexit.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-freer.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-mallocr.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-mlock.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-fclose.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-fflush.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-sbrkr.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-sysconf.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-errno.o)
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crtend.o
+ .data          0x00001354        0x0 /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crtn.o
  *(.data.*)
+ .data.s_weather_code
+                0x00001354        0x4 src/c/main.c.9.o
  .data.s_battery_percent
-                0x00000f80        0x4 src/c/main.c.9.o
+                0x00001358        0x4 src/c/main.c.9.o
+ .data.MESSAGE_KEY_WEATHER_CODE
+                0x0000135c        0x4 src/message_keys.auto.c.9.o
+                0x0000135c                MESSAGE_KEY_WEATHER_CODE
  .data.MESSAGE_KEY_TEMPERATURE
-                0x00000f84        0x4 src/message_keys.auto.c.9.o
-                0x00000f84                MESSAGE_KEY_TEMPERATURE
+                0x00001360        0x4 src/message_keys.auto.c.9.o
+                0x00001360                MESSAGE_KEY_TEMPERATURE
 
-.igot.plt       0x00000f88        0x0
- .igot.plt      0x00000f88        0x0 src/c/main.c.9.o
+.igot.plt       0x00001364        0x0
+ .igot.plt      0x00001364        0x0 src/c/main.c.9.o
 
-.got            0x00000f88        0x4
- .got           0x00000f88        0x4 src/c/main.c.9.o
+.got            0x00001364        0x8
+ .got           0x00001364        0x8 src/c/main.c.9.o
 
-.got.plt        0x00000f8c        0xc
- .got.plt       0x00000f8c        0xc src/c/main.c.9.o
-                0x00000f8c                _GLOBAL_OFFSET_TABLE_
+.got.plt        0x0000136c        0xc
+ .got.plt       0x0000136c        0xc src/c/main.c.9.o
+                0x0000136c                _GLOBAL_OFFSET_TABLE_
 
-.bss            0x00000f98       0x94
+.bss            0x00001378       0x80
  *(.bss)
  *(.bss.*)
  .bss.s_hr_buffer.0
-                0x00000f98        0x8 src/c/main.c.9.o
+                0x00001378        0x8 src/c/main.c.9.o
  .bss.s_steps_buffer.1
-                0x00000fa0        0xc src/c/main.c.9.o
- .bss.s_battery_buffer.2
-                0x00000fac        0x8 src/c/main.c.9.o
- .bss.s_date_buffer.3
-                0x00000fb4       0x10 src/c/main.c.9.o
- .bss.s_day_buffer.4
-                0x00000fc4        0x8 src/c/main.c.9.o
+                0x00001380        0xc src/c/main.c.9.o
+ .bss.s_date_num_buffer.2
+                0x0000138c        0x4 src/c/main.c.9.o
+ .bss.s_month_buffer.3
+                0x00001390        0x8 src/c/main.c.9.o
+ .bss.s_day_name_buffer.4
+                0x00001398        0x8 src/c/main.c.9.o
  .bss.s_time_buffer.5
-                0x00000fcc        0x8 src/c/main.c.9.o
+                0x000013a0        0x8 src/c/main.c.9.o
  .bss.s_weather_buffer.6
-                0x00000fd4        0x8 src/c/main.c.9.o
+                0x000013a8        0x8 src/c/main.c.9.o
  .bss.s_font_10
-                0x00000fdc        0x4 src/c/main.c.9.o
+                0x000013b0        0x4 src/c/main.c.9.o
  .bss.s_font_12
-                0x00000fe0        0x4 src/c/main.c.9.o
- .bss.s_font_18
-                0x00000fe4        0x4 src/c/main.c.9.o
- .bss.s_weather_icon_layer
-                0x00000fe8        0x4 src/c/main.c.9.o
- .bss.s_etank_layer
-                0x00000fec        0x4 src/c/main.c.9.o
- .bss.s_walk_icon_bitmap
-                0x00000ff0        0x4 src/c/main.c.9.o
- .bss.s_walk_icon_layer
-                0x00000ff4        0x4 src/c/main.c.9.o
- .bss.s_hr_icon_bitmap
-                0x00000ff8        0x4 src/c/main.c.9.o
- .bss.s_hr_icon_layer
-                0x00000ffc        0x4 src/c/main.c.9.o
- .bss.s_mega_man_bitmap
-                0x00001000        0x4 src/c/main.c.9.o
- .bss.s_mega_man_layer
-                0x00001004        0x4 src/c/main.c.9.o
+                0x000013b4        0x4 src/c/main.c.9.o
  .bss.s_weather_num_layer
-                0x00001008        0x4 src/c/main.c.9.o
+                0x000013b8        0x4 src/c/main.c.9.o
+ .bss.s_weather_icon_layer
+                0x000013bc        0x4 src/c/main.c.9.o
  .bss.s_steps_num_layer
-                0x0000100c        0x4 src/c/main.c.9.o
- .bss.s_date_layer
-                0x00001010        0x4 src/c/main.c.9.o
+                0x000013c0        0x4 src/c/main.c.9.o
+ .bss.s_walk_icon_bitmap
+                0x000013c4        0x4 src/c/main.c.9.o
+ .bss.s_walk_icon_layer
+                0x000013c8        0x4 src/c/main.c.9.o
+ .bss.s_mega_man_bitmap
+                0x000013cc        0x4 src/c/main.c.9.o
+ .bss.s_mega_man_layer
+                0x000013d0        0x4 src/c/main.c.9.o
  .bss.s_hr_num_layer
-                0x00001014        0x4 src/c/main.c.9.o
- .bss.s_battery_layer
-                0x00001018        0x4 src/c/main.c.9.o
- .bss.s_day_layer
-                0x0000101c        0x4 src/c/main.c.9.o
+                0x000013d4        0x4 src/c/main.c.9.o
+ .bss.s_hr_icon_layer
+                0x000013d8        0x4 src/c/main.c.9.o
+ .bss.s_etank_layer
+                0x000013dc        0x4 src/c/main.c.9.o
  .bss.s_time_layer
-                0x00001020        0x4 src/c/main.c.9.o
+                0x000013e0        0x4 src/c/main.c.9.o
+ .bss.s_date_num_layer
+                0x000013e4        0x4 src/c/main.c.9.o
+ .bss.s_month_layer
+                0x000013e8        0x4 src/c/main.c.9.o
+ .bss.s_day_name_layer
+                0x000013ec        0x4 src/c/main.c.9.o
  .bss.s_grid_layer
-                0x00001024        0x4 src/c/main.c.9.o
+                0x000013f0        0x4 src/c/main.c.9.o
  .bss.s_main_window
-                0x00001028        0x4 src/c/main.c.9.o
+                0x000013f4        0x4 src/c/main.c.9.o
 
 DISCARD
  libc.a(*)
@@ -1943,50 +1944,50 @@ LOAD /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../li
  .comment       0x00000039       0x3a /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libc.a(libc_a-errno.o)
  .comment       0x00000039       0x3a /home/brooks2564/.pebble-sdk/SDKs/4.9.169/toolchain/arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.2.1/thumb/v7-m/nofp/crtend.o
 
-.debug_info     0x00000000     0x27d9
- .debug_info    0x00000000     0x232f src/c/main.c.9.o
- .debug_info    0x0000232f      0x33e emery/appinfo.auto.c.9.o
- .debug_info    0x0000266d       0xdd emery/src/resource_ids.auto.c.9.o
- .debug_info    0x0000274a       0x8f src/message_keys.auto.c.9.o
+.debug_info     0x00000000     0x2d10
+ .debug_info    0x00000000     0x2858 src/c/main.c.9.o
+ .debug_info    0x00002858      0x33e emery/appinfo.auto.c.9.o
+ .debug_info    0x00002b96       0xdd emery/src/resource_ids.auto.c.9.o
+ .debug_info    0x00002c73       0x9d src/message_keys.auto.c.9.o
 
-.debug_abbrev   0x00000000      0x6b6
- .debug_abbrev  0x00000000      0x56b src/c/main.c.9.o
- .debug_abbrev  0x0000056b       0xb9 emery/appinfo.auto.c.9.o
- .debug_abbrev  0x00000624       0x4a emery/src/resource_ids.auto.c.9.o
- .debug_abbrev  0x0000066e       0x48 src/message_keys.auto.c.9.o
+.debug_abbrev   0x00000000      0x69d
+ .debug_abbrev  0x00000000      0x550 src/c/main.c.9.o
+ .debug_abbrev  0x00000550       0xb9 emery/appinfo.auto.c.9.o
+ .debug_abbrev  0x00000609       0x4a emery/src/resource_ids.auto.c.9.o
+ .debug_abbrev  0x00000653       0x4a src/message_keys.auto.c.9.o
 
 .debug_loclists
-                0x00000000      0x8ef
+                0x00000000      0xb06
  .debug_loclists
-                0x00000000      0x8ef src/c/main.c.9.o
+                0x00000000      0xb06 src/c/main.c.9.o
 
-.debug_aranges  0x00000000       0xe0
+.debug_aranges  0x00000000       0xf0
  .debug_aranges
-                0x00000000       0x98 src/c/main.c.9.o
+                0x00000000       0xa8 src/c/main.c.9.o
  .debug_aranges
-                0x00000098       0x18 emery/appinfo.auto.c.9.o
+                0x000000a8       0x18 emery/appinfo.auto.c.9.o
  .debug_aranges
-                0x000000b0       0x18 emery/src/resource_ids.auto.c.9.o
+                0x000000c0       0x18 emery/src/resource_ids.auto.c.9.o
  .debug_aranges
-                0x000000c8       0x18 src/message_keys.auto.c.9.o
+                0x000000d8       0x18 src/message_keys.auto.c.9.o
 
 .debug_rnglists
-                0x00000000      0x121
+                0x00000000      0x18b
  .debug_rnglists
-                0x00000000      0x121 src/c/main.c.9.o
+                0x00000000      0x18b src/c/main.c.9.o
 
-.debug_line     0x00000000      0xf08
- .debug_line    0x00000000      0xb70 src/c/main.c.9.o
- .debug_line    0x00000b70      0x168 emery/appinfo.auto.c.9.o
- .debug_line    0x00000cd8      0x11b emery/src/resource_ids.auto.c.9.o
- .debug_line    0x00000df3      0x115 src/message_keys.auto.c.9.o
+.debug_line     0x00000000     0x126a
+ .debug_line    0x00000000      0xed2 src/c/main.c.9.o
+ .debug_line    0x00000ed2      0x168 emery/appinfo.auto.c.9.o
+ .debug_line    0x0000103a      0x11b emery/src/resource_ids.auto.c.9.o
+ .debug_line    0x00001155      0x115 src/message_keys.auto.c.9.o
 
-.debug_str      0x00000000     0x1655
- .debug_str     0x00000000     0x1655 src/c/main.c.9.o
-                               0x1328 (size before relaxing)
- .debug_str     0x00001655      0x4ca emery/appinfo.auto.c.9.o
- .debug_str     0x00001655      0x21e emery/src/resource_ids.auto.c.9.o
- .debug_str     0x00001655      0x184 src/message_keys.auto.c.9.o
+.debug_str      0x00000000     0x169c
+ .debug_str     0x00000000     0x169c src/c/main.c.9.o
+                               0x136f (size before relaxing)
+ .debug_str     0x0000169c      0x4ca emery/appinfo.auto.c.9.o
+ .debug_str     0x0000169c      0x21e emery/src/resource_ids.auto.c.9.o
+ .debug_str     0x0000169c      0x19d src/message_keys.auto.c.9.o
 
-.debug_frame    0x00000000      0x23c
- .debug_frame   0x00000000      0x23c src/c/main.c.9.o
+.debug_frame    0x00000000      0x2d0
+ .debug_frame   0x00000000      0x2d0 src/c/main.c.9.o
