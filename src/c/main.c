@@ -8,8 +8,9 @@ static TextLayer *s_day_name_layer;
 static TextLayer *s_month_layer;
 static TextLayer *s_date_num_layer;
 
-// (1,0) Time cell
-static TextLayer *s_time_layer;
+// (1,0) Time cell: hours top half, minutes bottom half
+static TextLayer *s_hours_layer;
+static TextLayer *s_minutes_layer;
 
 // (2,0) E-Tank battery indicator
 static Layer *s_etank_layer;
@@ -33,6 +34,7 @@ static Layer *s_weather_icon_layer;
 static TextLayer *s_weather_num_layer;
 static int s_weather_code = -1;  // WMO weather code from Open-Meteo
 
+static GFont s_font_18;
 static GFont s_font_12;
 static GFont s_font_10;
 
@@ -111,13 +113,11 @@ static void etank_update_proc(Layer *layer, GContext *ctx) {
 static void hr_icon_update_proc(Layer *layer, GContext *ctx) {
   GRect bounds = layer_get_bounds(layer);
   int cx = bounds.size.w / 2;
-  int top = 1;
+  int top = 5;  // extra padding so heart stays inside cell border
 
   graphics_context_set_fill_color(ctx, GColorRed);
-  // Two overlapping circles for the top lobes
   graphics_fill_circle(ctx, GPoint(cx - 7, top + 8), 8);
   graphics_fill_circle(ctx, GPoint(cx + 7, top + 8), 8);
-  // Taper to a point at bottom using horizontal fills
   for (int i = 0; i <= 16; i++) {
     int w = 30 - i * 2;
     if (w < 1) w = 1;
@@ -143,10 +143,10 @@ static void draw_sun(GContext *ctx, int cx, int cy, int r) {
 
 static void draw_cloud(GContext *ctx, int cx, int cy, GColor color) {
   graphics_context_set_fill_color(ctx, color);
-  graphics_fill_circle(ctx, GPoint(cx - 8, cy + 3), 7);
-  graphics_fill_circle(ctx, GPoint(cx + 4, cy),     9);
-  graphics_fill_circle(ctx, GPoint(cx + 15, cy + 4), 6);
-  graphics_fill_rect(ctx, GRect(cx - 14, cy + 2, 36, 8), 0, GCornerNone);
+  graphics_fill_circle(ctx, GPoint(cx - 8, cy + 5), 7);
+  graphics_fill_circle(ctx, GPoint(cx + 4, cy + 3), 8);  // reduced radius 9→8, moved down
+  graphics_fill_circle(ctx, GPoint(cx + 15, cy + 6), 6);
+  graphics_fill_rect(ctx, GRect(cx - 14, cy + 4, 36, 8), 0, GCornerNone);
 }
 
 static void weather_icon_update_proc(Layer *layer, GContext *ctx) {
@@ -162,68 +162,64 @@ static void weather_icon_update_proc(Layer *layer, GContext *ctx) {
     return;
   }
 
+  // All drawing anchored so nothing clips above y=4 (inside cell border)
   if (s_weather_code == 0) {
-    // Clear: big sun
-    draw_sun(ctx, cx, 16, 11);
+    // Clear: big sun — center at y=20, radius 9, rays to y=3
+    draw_sun(ctx, cx, 20, 9);
 
   } else if (s_weather_code <= 3) {
-    // Partly cloudy: small sun upper-left + cloud
-    draw_sun(ctx, cx - 8, 10, 8);
-    draw_cloud(ctx, cx + 4, 18, GColorWhite);
+    // Partly cloudy: small sun upper-left + cloud below
+    draw_sun(ctx, cx - 8, 14, 7);
+    draw_cloud(ctx, cx + 2, 16, GColorWhite);
 
   } else if (s_weather_code <= 48) {
-    // Fog: gray cloud + horizontal fog lines
-    draw_cloud(ctx, cx, 8, GColorLightGray);
+    // Fog: cloud + horizontal lines
+    draw_cloud(ctx, cx, 10, GColorLightGray);
     graphics_context_set_stroke_color(ctx, GColorLightGray);
     graphics_context_set_stroke_width(ctx, 2);
     for (int i = 0; i < 3; i++) {
-      int y = 22 + i * 5;
-      graphics_draw_line(ctx, GPoint(cx - 14, y), GPoint(cx + 14, y));
+      graphics_draw_line(ctx, GPoint(cx - 14, 26 + i * 5), GPoint(cx + 14, 26 + i * 5));
     }
 
-  } else if (s_weather_code <= 77 || (s_weather_code >= 85 && s_weather_code <= 86)) {
-    // Snow (drizzle 51-55 categorized as light rain below, snow 71-77, snow showers 85-86)
-    bool is_snow = (s_weather_code >= 71 && s_weather_code <= 77) ||
-                   (s_weather_code >= 85 && s_weather_code <= 86);
-    if (is_snow) {
-      draw_cloud(ctx, cx, 8, GColorWhite);
-      // Snowflake dots below cloud
-      graphics_context_set_fill_color(ctx, GColorCyan);
-      int sx[6] = {-12, -4, 4, 12, -8, 8};
-      int sy[6] = {22, 25, 22, 25, 29, 29};
-      for (int i = 0; i < 6; i++) {
-        graphics_fill_circle(ctx, GPoint(cx + sx[i], sy[i]), 2);
-      }
-    } else {
-      // Drizzle/light rain
-      draw_cloud(ctx, cx, 8, GColorLightGray);
-      graphics_context_set_stroke_color(ctx, GColorCyan);
-      graphics_context_set_stroke_width(ctx, 2);
-      for (int i = 0; i < 4; i++) {
-        int x = cx - 12 + i * 8;
-        graphics_draw_line(ctx, GPoint(x, 22), GPoint(x - 3, 29));
-      }
+  } else if ((s_weather_code >= 71 && s_weather_code <= 77) ||
+             (s_weather_code >= 85 && s_weather_code <= 86)) {
+    // Snow
+    draw_cloud(ctx, cx, 10, GColorWhite);
+    graphics_context_set_fill_color(ctx, GColorCyan);
+    int sx[6] = {-12, -4, 4, 12, -8, 8};
+    int sy[6] = {28, 31, 28, 31, 35, 35};
+    for (int i = 0; i < 6; i++) {
+      graphics_fill_circle(ctx, GPoint(cx + sx[i], sy[i]), 2);
     }
 
-  } else if (s_weather_code <= 82) {
-    // Rain showers / heavy rain
-    draw_cloud(ctx, cx, 8, GColorDarkGray);
+  } else if (s_weather_code <= 67) {
+    // Drizzle / light-moderate rain
+    draw_cloud(ctx, cx, 10, GColorLightGray);
     graphics_context_set_stroke_color(ctx, GColorCyan);
     graphics_context_set_stroke_width(ctx, 2);
     for (int i = 0; i < 4; i++) {
       int x = cx - 12 + i * 8;
-      graphics_draw_line(ctx, GPoint(x, 22), GPoint(x - 4, 31));
+      graphics_draw_line(ctx, GPoint(x, 26), GPoint(x - 3, 33));
+    }
+
+  } else if (s_weather_code <= 82) {
+    // Heavy rain / showers
+    draw_cloud(ctx, cx, 10, GColorDarkGray);
+    graphics_context_set_stroke_color(ctx, GColorCyan);
+    graphics_context_set_stroke_width(ctx, 2);
+    for (int i = 0; i < 4; i++) {
+      int x = cx - 12 + i * 8;
+      graphics_draw_line(ctx, GPoint(x, 26), GPoint(x - 4, 35));
     }
 
   } else {
     // Thunderstorm (95, 96, 99)
-    draw_cloud(ctx, cx, 8, GColorDarkGray);
-    // Yellow lightning bolt
+    draw_cloud(ctx, cx, 10, GColorDarkGray);
     graphics_context_set_stroke_color(ctx, GColorYellow);
     graphics_context_set_stroke_width(ctx, 3);
-    graphics_draw_line(ctx, GPoint(cx + 2, 20), GPoint(cx - 4, 28));
-    graphics_draw_line(ctx, GPoint(cx - 4, 28), GPoint(cx + 2, 28));
-    graphics_draw_line(ctx, GPoint(cx + 2, 28), GPoint(cx - 5, 36));
+    graphics_draw_line(ctx, GPoint(cx + 2, 24), GPoint(cx - 4, 32));
+    graphics_draw_line(ctx, GPoint(cx - 4, 32), GPoint(cx + 2, 32));
+    graphics_draw_line(ctx, GPoint(cx + 2, 32), GPoint(cx - 5, 40));
   }
 }
 
@@ -254,10 +250,14 @@ static void update_time() {
   time_t temp = time(NULL);
   struct tm *tick_time = localtime(&temp);
 
-  static char s_time_buffer[8];
-  strftime(s_time_buffer, sizeof(s_time_buffer),
-           clock_is_24h_style() ? "%H:%M" : "%I:%M", tick_time);
-  text_layer_set_text(s_time_layer, s_time_buffer);
+  static char s_hours_buffer[4];
+  strftime(s_hours_buffer, sizeof(s_hours_buffer),
+           clock_is_24h_style() ? "%H" : "%I", tick_time);
+  text_layer_set_text(s_hours_layer, s_hours_buffer);
+
+  static char s_minutes_buffer[4];
+  strftime(s_minutes_buffer, sizeof(s_minutes_buffer), "%M", tick_time);
+  text_layer_set_text(s_minutes_layer, s_minutes_buffer);
 
   static char s_day_name_buffer[8];
   strftime(s_day_name_buffer, sizeof(s_day_name_buffer), "%a", tick_time);
@@ -362,6 +362,7 @@ static void main_window_load(Window *window) {
   layer_set_update_proc(s_grid_layer, grid_update_proc);
   layer_add_child(window_layer, s_grid_layer);
 
+  s_font_18 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MEGA_MAN_18));
   s_font_12 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MEGA_MAN_12));
   s_font_10 = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MEGA_MAN_10));
 
@@ -374,9 +375,10 @@ static void main_window_load(Window *window) {
   s_month_layer    = make_text_layer(cx0, ry0, 22, 16, s_font_10, window);
   s_date_num_layer = make_text_layer(cx0, ry0, 40, 16, s_font_10, window);
 
-  // --- (1,0) Time cell ---
+  // --- (1,0) Time cell: hours top half, minutes bottom half ---
   int cx1 = MARGIN_X + BOX_SIZE;
-  s_time_layer = make_text_layer(cx1, ry0, 22, 18, s_font_12, window);
+  s_hours_layer  = make_text_layer(cx1, ry0,  8, 24, s_font_18, window);
+  s_minutes_layer = make_text_layer(cx1, ry0, 34, 24, s_font_18, window);
 
   // --- (2,0) E-Tank ---
   int cx2 = MARGIN_X + 2*BOX_SIZE;
@@ -423,7 +425,8 @@ static void main_window_unload(Window *window) {
   text_layer_destroy(s_day_name_layer);
   text_layer_destroy(s_month_layer);
   text_layer_destroy(s_date_num_layer);
-  text_layer_destroy(s_time_layer);
+  text_layer_destroy(s_hours_layer);
+  text_layer_destroy(s_minutes_layer);
   text_layer_destroy(s_hr_num_layer);
   text_layer_destroy(s_steps_num_layer);
   text_layer_destroy(s_weather_num_layer);
@@ -438,6 +441,7 @@ static void main_window_unload(Window *window) {
   bitmap_layer_destroy(s_walk_icon_layer);
   gbitmap_destroy(s_walk_icon_bitmap);
 
+  fonts_unload_custom_font(s_font_18);
   fonts_unload_custom_font(s_font_12);
   fonts_unload_custom_font(s_font_10);
   layer_destroy(s_grid_layer);
