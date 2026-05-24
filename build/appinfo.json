@@ -28,16 +28,6 @@
                 "type": "png",
                 "name": "IMAGE_MEGAMAN_IDLE",
                 "file": "images/megaman_idle.png"
-            },
-            {
-                "type": "png",
-                "name": "IMAGE_BT_CONNECTED",
-                "file": "images/etank.png"
-            },
-            {
-                "type": "png",
-                "name": "IMAGE_BT_DISCONNECTED",
-                "file": "images/etank_empty.png"
             }
         ]
     },

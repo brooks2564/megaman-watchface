@@ -46,9 +46,9 @@ PEBBLE_SDK_ROOT = '/home/brooks2564/.pebble-sdk/SDKs/current/sdk-core/pebble'
 PLATFORM = {'NAME': 'emery', 'MAX_APP_BINARY_SIZE': 131072, 'MAX_APP_MEMORY_SIZE': 131072, 'MAX_WORKER_MEMORY_SIZE': 10240, 'MAX_RESOURCES_SIZE_APPSTORE': 262144, 'MAX_RESOURCES_SIZE': 1048576, 'DEFINES': ['PBL_PLATFORM_EMERY', 'PBL_COLOR', 'PBL_RECT', 'PBL_MICROPHONE', 'PBL_SMARTSTRAP', 'PBL_HEALTH', 'PBL_SMARTSTRAP_POWER', 'PBL_COMPASS', 'PBL_TOUCH', 'PBL_RGB_BACKLIGHT', 'PBL_SPEAKER', 'PBL_DISPLAY_WIDTH=200', 'PBL_DISPLAY_HEIGHT=228'], 'BUILD_DIR': 'emery', 'BUNDLE_BIN_DIR': 'emery', 'ADDITIONAL_TEXT_LINES_FOR_PEBBLE_H': [], 'MAX_FONT_GLYPH_SIZE': 512, 'TAGS': ['emery', 'color', 'rect', 'mic', 'strap', 'health', 'strappower', 'compass', 'touch', 'speaker', '200w', '228h']}
 PLATFORM_NAME = 'emery'
 PREFIX = '/usr/local'
-PROJECT_INFO = {'displayName': 'Mega Man Stage Select', 'uuid': 'fbc18018-367f-457c-9fcc-b75351ee0dd3', 'sdkVersion': '3', 'enableMultiJS': True, 'targetPlatforms': ['emery'], 'watchapp': {'watchface': True}, 'capabilities': ['health'], 'messageKeys': {'TEMPERATURE': 10000}, 'resources': {'media': [{'type': 'font', 'name': 'FONT_MEGA_MAN_18', 'file': 'fonts/megaman.ttf', 'characterRegex': '[0-9A-Za-z!@#$%^&*()\\-+=:\xb0/ ]', 'compatibility': '2.7'}, {'type': 'png', 'name': 'IMAGE_MEGAMAN_IDLE', 'file': 'images/megaman_idle.png'}, {'type': 'png', 'name': 'IMAGE_BT_CONNECTED', 'file': 'images/etank.png'}, {'type': 'png', 'name': 'IMAGE_BT_DISCONNECTED', 'file': 'images/etank_empty.png'}]}, 'name': 'MegaManStageSelect', 'shortName': 'Mega Man Stage Select', 'longName': 'Mega Man Stage Select', 'versionLabel': '1.0.0', 'companyName': 'Brooman Inks', 'appKeys': {'TEMPERATURE': 10000}}
+PROJECT_INFO = {'displayName': 'Mega Man Stage Select', 'uuid': 'fbc18018-367f-457c-9fcc-b75351ee0dd3', 'sdkVersion': '3', 'enableMultiJS': True, 'targetPlatforms': ['emery'], 'watchapp': {'watchface': True}, 'capabilities': ['health'], 'messageKeys': {'TEMPERATURE': 10000}, 'resources': {'media': [{'type': 'font', 'name': 'FONT_MEGA_MAN_18', 'file': 'fonts/megaman.ttf', 'characterRegex': '[0-9A-Za-z!@#$%^&*()\\-+=:\xb0/ ]', 'compatibility': '2.7'}, {'type': 'png', 'name': 'IMAGE_MEGAMAN_IDLE', 'file': 'images/megaman_idle.png'}]}, 'name': 'MegaManStageSelect', 'shortName': 'Mega Man Stage Select', 'longName': 'Mega Man Stage Select', 'versionLabel': '1.0.0', 'companyName': 'Brooman Inks', 'appKeys': {'TEMPERATURE': 10000}}
 REQUESTED_PLATFORMS = ['emery']
-RESOURCES_JSON = [{'type': 'font', 'name': 'FONT_MEGA_MAN_18', 'file': 'fonts/megaman.ttf', 'characterRegex': '[0-9A-Za-z!@#$%^&*()\\-+=:\xb0/ ]', 'compatibility': '2.7'}, {'type': 'png', 'name': 'IMAGE_MEGAMAN_IDLE', 'file': 'images/megaman_idle.png'}, {'type': 'png', 'name': 'IMAGE_BT_CONNECTED', 'file': 'images/etank.png'}, {'type': 'png', 'name': 'IMAGE_BT_DISCONNECTED', 'file': 'images/etank_empty.png'}]
+RESOURCES_JSON = [{'type': 'font', 'name': 'FONT_MEGA_MAN_18', 'file': 'fonts/megaman.ttf', 'characterRegex': '[0-9A-Za-z!@#$%^&*()\\-+=:\xb0/ ]', 'compatibility': '2.7'}, {'type': 'png', 'name': 'IMAGE_MEGAMAN_IDLE', 'file': 'images/megaman_idle.png'}]
 RPATH_ST = '-Wl,-rpath,%s'
 SANDBOX = False
 SDK_VERSION_MAJOR = 5
@@ -61,7 +61,7 @@ STLIB_MARKER = None
 STLIB_ST = '-l%s'
 SUPPORTED_PLATFORMS = ['basalt', 'aplite', 'diorite', 'chalk', 'flint', 'emery', 'gabbro']
 TARGET_PLATFORMS = ['emery']
-TIMESTAMP = 1779591321
+TIMESTAMP = 1779592634
 USE_GROUPS = True
 VERBOSE = 0
 WEBPACK = ['/home/brooks2564/.pebble-sdk/SDKs/current/node_modules/.bin/webpack']
