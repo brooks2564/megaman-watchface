@@ -79,9 +79,9 @@ static void etank_update_proc(Layer *layer, GContext *ctx) {
         color = (interior_row >= empty_rows) ? fill_color : GColorBlack;
       } else {
         switch (pixel) {
-          case 1:  color = GColorCobaltBlue; break;
-          case 2:  color = GColorLightGray;  break;
-          case 3:  color = GColorDarkGray;   break;
+          case 1:  color = GColorBlue;  break;
+          case 2:  color = GColorCyan; break;
+          case 3:  color = GColorBlack; break;
           default: color = GColorBlack;      break;
         }
       }
