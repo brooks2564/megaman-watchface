@@ -91,15 +91,18 @@ static void etank_update_proc(Layer *layer, GContext *ctx) {
     }
   }
 
-  // Small black pixel-art E centered in tank body (5x7 game pixels)
-  // Interior: cols 2-10 (27px wide), rows 1-14 (42px tall) at scale 3
-  int ex = ox + 6 + (27 - 5*ES) / 2;  // horizontally centered in interior
-  int ey = oy + 3 + (42 - 7*ES) / 2;  // vertically centered in interior
+  // Black pixel-art E matching fonttank style: 2px strokes, two middle bars
+  // 9 units wide x 14 units tall at 2px per unit = 18x28 screen pixels
+  // Interior: cols 2-10 (27px wide), rows 1-14 (42px tall) in screen coords
+  int s = 2;  // stroke size in screen pixels
+  int ex = ox + 6 + (27 - 9*s) / 2;
+  int ey = oy + 3 + (42 - 14*s) / 2;
   graphics_context_set_fill_color(ctx, GColorBlack);
-  graphics_fill_rect(ctx, GRect(ex,        ey,        5*ES, ES),  0, GCornerNone); // top bar
-  graphics_fill_rect(ctx, GRect(ex,        ey+ES,     ES,   6*ES), 0, GCornerNone); // left bar
-  graphics_fill_rect(ctx, GRect(ex,        ey+3*ES,   4*ES, ES),  0, GCornerNone); // middle bar
-  graphics_fill_rect(ctx, GRect(ex,        ey+6*ES,   5*ES, ES),  0, GCornerNone); // bottom bar
+  graphics_fill_rect(ctx, GRect(ex,        ey,         9*s, 2*s), 0, GCornerNone); // top bar
+  graphics_fill_rect(ctx, GRect(ex,        ey+2*s,     2*s, 10*s), 0, GCornerNone); // left bar
+  graphics_fill_rect(ctx, GRect(ex,        ey+4*s,     7*s, 2*s), 0, GCornerNone); // upper mid bar
+  graphics_fill_rect(ctx, GRect(ex,        ey+8*s,     7*s, 2*s), 0, GCornerNone); // lower mid bar
+  graphics_fill_rect(ctx, GRect(ex,        ey+12*s,    9*s, 2*s), 0, GCornerNone); // bottom bar
 }
 
 static void grid_update_proc(Layer *layer, GContext *ctx) {
